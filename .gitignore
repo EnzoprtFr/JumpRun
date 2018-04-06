@@ -1,22 +1,29 @@
-# Compiled class file
-*.class
+#pragma strict
 
-# Log file
-*.log
+var menuObject : GameObject;
+private var isActive : boolean = false;
 
-# BlueJ files
-*.ctxt
+function Update () {
+    // menu est afiche
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+ if(isActive == true){
+ menuObject.SetActive(true);
+ Cursor.visible = true;
+ Cursor.lockState = CursorLockMode.Confined;
+ Time.timeScale = 0;
+ }else{
+ // menu non affiche
+  menuObject.SetActive(false);
+ Cursor.visible = false;
+ Cursor.lockState = CursorLockMode.Locked;
+ Time.timeScale = 1;
+ }
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
+ if(Input.GetKeyDown(KeyCode.Escape)){
+  RESUME_BUTTON();
+ }
+}
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+function RESUME_BUTTON(){
+isActive = !isActive;
+}﻿
